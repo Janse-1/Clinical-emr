@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Pacientes</h2>
+
+<a href="{% url 'crear_paciente' %}">Nuevo Paciente</a>
+
+<table>
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Nombre</th>
+<th>Identificación</th>
+<th>Teléfono</th>
+<th>Acciones</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for paciente in pacientes %}
+
+<tr>
+
+<td>{{ paciente.id }}</td>
+<td>{{ paciente.nombre }}</td>
+<td>{{ paciente.identificacion }}</td>
+<td>{{ paciente.telefono }}</td>
+
+<td>
+
+<a href="{% url 'editar_paciente' paciente.id %}">Editar</a>
+
+<a href="{% url 'eliminar_paciente' paciente.id %}">Eliminar</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}
