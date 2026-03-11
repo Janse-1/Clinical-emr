@@ -1,66 +1,116 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Sistema de Expedientes Clínicos{% endblock %}</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    
-    <!-- Google Font profesional -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{% block title %}EMR Médico{% endblock %}</title>
+
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="nav-container">
-        <div class="logo">
-            <h2>🩺 EMR Médico</h2>
-        </div>
+<div class="container">
+   
+<!-- SIDEBAR -->
+<aside class="sidebar">
 
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="{% url 'crear_paciente' %}">Nuevo Paciente</a></li>
-                <li><a href="{% url 'lista_pacientes' %}">Pacientes</a></li>
-                <li><a href="#">Crear Expediente</a></li>
-                <li><a href="#">Consultas Recientes</a></li>
-                <li><a href="#">Cerrar Sesión</a></li>
-            </ul>
-        </nav>
-    </div>
+<div class="logo">
+<h2>EMR</h2>
+</div>
+
+<nav>
+
+<ul>
+
+<li>
+<a href="{% url 'dashboard' %}">
+🏠 Inicio
+</a>
+</li>
+
+<li>
+<a href="{% url 'lista_pacientes' %}">
+📁 Expedientes
+</a>
+</li>
+
+<li>
+<a href="{% url 'crear_paciente' %}">
+➕ Nuevo Paciente
+</a>
+</li>
+
+<li>
+<a href="#">
+📄 Resúmenes clínicos
+</a>
+</li>
+
+<li>
+<a href="#">
+⬇ Exportaciones PDF
+</a>
+</li>
+
+<li>
+<a href="#">
+🛡 Respaldo y seguridad
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+</aside>
+
+<!-- CONTENIDO -->
+
+<div class="main">
+
+<!-- TOPBAR -->
+
+<header class="topbar">
+
+<form method="GET" action="{% url 'dashboard' %}">
+
+    <input
+    type="text"
+    name="q"
+    placeholder="Buscar paciente por nombre o identificación">
+
+</form>
+
+<div class="user">
+
+<span>Sistema protegido</span>
+
+</div>
+
 </header>
 
-<!-- BUSCADOR GLOBAL -->
-<section class="search-section">
-    <div class="search-container">
-        <h3>Buscar Paciente</h3>
-        <form method="GET" action="#">
-            <input type="text" name="query" placeholder="Buscar por nombre, apellido o documento de identidad">
-            <button type="submit">Buscar</button>
-        </form>
-    </div>
-</section>
-
 <!-- CONTENIDO DINÁMICO -->
-<main class="main-content">
-    {% block content %}
-    <!-- Aquí se cargará el contenido específico de cada vista -->
-    {% endblock %}
-</main>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-container">
-        <p>Sistema de Gestión de Expedientes Clínicos</p>
-        <p>Versión 1.0 | Uso interno | 2026</p>
-        <p>Datos protegidos conforme a normativa de salud</p>
-    </div>
-</footer>
+<div class="content">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+</div>
+
+</div>
 
 </body>
+
 </html>

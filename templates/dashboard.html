@@ -1,16 +1,69 @@
 {% extends 'base.html' %}
 
-{% block title %}Dashboard{% endblock %}
-
 {% block content %}
 
-<h1>Dashboard</h1>
-<p>Bienvenido al Sistema de Expedientes Clínicos</p>
+<h1 class="title">Dashboard Médico</h1>
 
-<div style="margin-top:30px;">
-    <a href="#" class="btn">Crear Paciente</a>
-    <a href="#" class="btn">Ver Pacientes</a>
-    <a href="#" class="btn">Consultas Recientes</a>
+<div class="cards">
+
+<div class="card">
+<h3>Total Pacientes</h3>
+<p>{{ total_pacientes }}</p>
 </div>
+
+<div class="card">
+<h3>Consultas Hoy</h3>
+<p>{{ consultas_hoy }}</p>
+</div>
+
+<div class="card">
+<h3>Expedientes</h3>
+<p>{{ total_expedientes }}</p>
+</div>
+
+</div>
+
+<h2>Pacientes recientes</h2>
+
+<table class="tabla">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Nombre</th>
+<th>Identificación</th>
+<th>Teléfono</th>
+<th>Fecha registro</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for paciente in pacientes %}
+
+<tr>
+
+<td>{{ paciente.id }}</td>
+
+<td>{{ paciente.nombre }}</td>
+
+<td>{{ paciente.identificacion }}</td>
+
+<td>{{ paciente.telefono }}</td>
+
+<td>{{ paciente.fecha_creacion|date:"d/m/Y" }}</td>
+
+<td>
+<a href="#" class="btn-ver">Ver expediente</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
 
 {% endblock %}
