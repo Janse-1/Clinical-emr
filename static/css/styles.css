@@ -257,3 +257,62 @@ font-size:16px;
 border-radius:4px;
 cursor:pointer;
 }
+
+.form-container{
+max-width:900px;
+margin:auto;
+background:white;
+padding:30px;
+font-family:Arial;
+}
+
+.section{
+margin-bottom:15px;
+border-radius:5px;
+overflow:hidden;
+}
+
+.accordion{
+width:100%;
+background:#1e3557;
+color:white;
+padding:15px;
+font-size:16px;
+border:none;
+text-align:left;
+cursor:pointer;
+font-weight:bold;
+letter-spacing:1px;
+}
+
+.panel{
+display:none;
+padding:25px;
+background:#f7f9fb;
+border:1px solid #e2e6ea;
+}
+
+.panel h4{
+margin-top:20px;
+color:#1e3557;
+border-bottom:2px solid #cfd8e3;
+padding-bottom:5px;
+}
+
+form p{
+margin-bottom:15px;
+}
+
+form input, form select, form textarea{
+width:100%;
+border:none;
+border-bottom:2px solid #cfd8e3;
+padding:6px;
+background:transparent;
+}
+
+form input:focus{
+outline:none;
+border-bottom:2px solid #1e3557;
+}
+

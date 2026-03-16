@@ -167,49 +167,56 @@ Guardar expediente
 <script>
     document.addEventListener("DOMContentLoaded", function(){
 
-/* TABS */
+    /* TABS */
 
 const tabs = document.querySelectorAll(".tab-button");
 const contents = document.querySelectorAll(".tab-content");
 
-tabs.forEach(tab => {
+    tabs.forEach(tab => {
 
-tab.addEventListener("click", () => {
+    tab.addEventListener("click", () => {
 
-tabs.forEach(t => t.classList.remove("active"));
-contents.forEach(c => c.classList.remove("active"));
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
 
-tab.classList.add("active");
+    tab.classList.add("active");
 
-document
-.getElementById(tab.dataset.tab)
-.classList.add("active");
+    document
+    .getElementById(tab.dataset.tab)
+    .classList.add("active");
 
-});
+    });
 
-});
+    });
 
 
-/* ACCORDION */
+    /* ACCORDION */
 
 const accordions = document.querySelectorAll(".accordion");
 
 accordions.forEach(btn => {
+    btn.addEventListener("click", function(e) {
+        // Evita que el formulario se envíe si el botón está dentro de un <form>
+        e.preventDefault(); 
 
-btn.addEventListener("click", function(){
+        const panel = this.nextElementSibling;
+        const isOpen = panel.style.display === "block";
 
-const panel = this.nextElementSibling;
+        // 1. Cerramos TODOS los paneles primero
+        document.querySelectorAll(".panel").forEach(p => {
+            p.style.display = "none";
+        });
 
-panel.style.display =
-panel.style.display === "block"
-? "none"
-: "block";
-
+        // 2. Si el panel que clickeamos NO estaba abierto, lo abrimos
+        // (Esto permite que si haces click en uno abierto, simplemente se cierre)
+        if (!isOpen) {
+            panel.style.display = "block";
+        }
+    });
 });
 
-});
+    });
 
-});
 </script>
 
 {% endblock %}
