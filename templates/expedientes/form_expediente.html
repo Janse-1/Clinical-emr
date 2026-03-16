@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-wrapper">
+
+<h2>Expediente Clínico</h2>
+<p>Paciente: {{ paciente.nombre }}</p>
+
+<form method="POST">
+{% csrf_token %}
+
+<!-- TABS -->
+
+<div class="tabs">
+
+<button class="tab-button active" data-tab="personales">
+Datos personales
+</button>
+
+<button class="tab-button" data-tab="antecedentes">
+Antecedentes
+</button>
+
+<button class="tab-button" data-tab="evaluacion">
+Evaluación clínica
+</button>
+
+<button class="tab-button" data-tab="exploracion">
+Exploración física
+</button>
+
+<button class="tab-button" data-tab="diagnostico">
+Diagnóstico
+</button>
+
+</div>
+
+
+<!-- TAB 1 -->
+
+<div class="tab-content active" id="personales">
+
+<button type="button" class="accordion">
+Ficha de identificación
+</button>
+
+<div class="panel">
+{{ ficha_form.as_p }}
+</div>
+
+
+<button type="button" class="accordion">
+Antecedentes heredofamiliares
+</button>
+
+<div class="panel">
+{{ heredo_form.as_p }}
+</div>
+
+</div>
+
+
+<!-- TAB 2 -->
+
+<div class="tab-content" id="antecedentes">
+
+<button type="button" class="accordion">
+No patológicos
+</button>
+
+<div class="panel">
+{{ nopato_form.as_p }}
+</div>
+
+
+<button type="button" class="accordion">
+Patológicos
+</button>
+
+<div class="panel">
+{{ pato_form.as_p }}
+</div>
+
+
+<button type="button" class="accordion">
+Gineco-obstétricos
+</button>
+
+<div class="panel">
+{{ gineco_form.as_p }}
+</div>
+
+</div>
+
+
+<!-- TAB 3 -->
+
+<div class="tab-content" id="evaluacion">
+
+<button class="accordion">
+Padecimiento actual
+</button>
+
+<div class="panel">
+{{ padecimiento_form.as_p }}
+</div>
+
+
+<button class="accordion">
+Interrogatorio por sistemas
+</button>
+
+<div class="panel">
+{{ interrogatorio_form.as_p }}
+</div>
+
+</div>
+
+
+<!-- TAB 4 -->
+
+<div class="tab-content" id="exploracion">
+
+<button class="accordion">
+Exploración física
+</button>
+
+<div class="panel">
+{{ exploracion_form.as_p }}
+</div>
+
+</div>
+
+
+<!-- TAB 5 -->
+
+<div class="tab-content" id="diagnostico">
+
+<button class="accordion">
+Diagnóstico
+</button>
+
+<div class="panel">
+{{ diagnostico_form.as_p }}
+</div>
+
+<button class="accordion">
+Plan terapéutico
+</button>
+
+<div class="panel">
+{{ plan_form.as_p }}
+</div>
+
+</div>
+
+
+<button class="save-btn">
+Guardar expediente
+</button>
+
+</form>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+
+/* TABS */
+
+const tabs = document.querySelectorAll(".tab-button");
+const contents = document.querySelectorAll(".tab-content");
+
+tabs.forEach(tab => {
+
+tab.addEventListener("click", () => {
+
+tabs.forEach(t => t.classList.remove("active"));
+contents.forEach(c => c.classList.remove("active"));
+
+tab.classList.add("active");
+
+document
+.getElementById(tab.dataset.tab)
+.classList.add("active");
+
+});
+
+});
+
+
+/* ACCORDION */
+
+const accordions = document.querySelectorAll(".accordion");
+
+accordions.forEach(btn => {
+
+btn.addEventListener("click", function(){
+
+const panel = this.nextElementSibling;
+
+panel.style.display =
+panel.style.display === "block"
+? "none"
+: "block";
+
+});
+
+});
+
+});
+</script>
+
+{% endblock %}

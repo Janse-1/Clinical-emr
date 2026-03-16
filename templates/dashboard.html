@@ -55,7 +55,7 @@
 <td>{{ paciente.fecha_creacion|date:"d/m/Y" }}</td>
 
 <td>
-<a href="#" class="btn-ver">Ver expediente</a>
+<a href= "{% url 'expediente_paciente' paciente.id %}" class="btn-ver">Ver expediente</a>
 </td>
 
 </tr>

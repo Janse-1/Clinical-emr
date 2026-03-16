@@ -195,3 +195,65 @@ border-radius:6px;
 text-decoration:none;
 
 }
+
+.tabs{
+display:flex;
+border-bottom:3px solid #ddd;
+margin-bottom:20px;
+}
+
+.tab-button{
+padding:12px 20px;
+border:none;
+background:none;
+cursor:pointer;
+font-weight:bold;
+color:#555;
+}
+
+.tab-button.active{
+color:#673ab7;
+border-bottom:3px solid #673ab7;
+}
+
+.tab-content{
+display:none;
+padding:20px;
+background:#f8f9fb;
+border-radius:6px;
+}
+
+.tab-content.active{
+display:block;
+}
+
+.accordion{
+width:100%;
+text-align:left;
+padding:12px;
+border:none;
+background:#e9ecf2;
+cursor:pointer;
+margin-top:10px;
+font-weight:bold;
+border-radius:4px;
+}
+
+.panel{
+display:none;
+padding:15px;
+background:white;
+border:1px solid #ddd;
+margin-bottom:10px;
+}
+
+.save-btn{
+margin-top:25px;
+background:#673ab7;
+color:white;
+border:none;
+padding:12px 25px;
+font-size:16px;
+border-radius:4px;
+cursor:pointer;
+}

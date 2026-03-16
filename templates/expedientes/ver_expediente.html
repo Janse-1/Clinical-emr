@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Expediente Clínico</h2>
+
+<h3>Paciente: {{ expediente.paciente.nombre }}</h3>
+
+<p><b>Número expediente:</b> {{ expediente.id }}</p>
+
+<a href="{% url 'expediente_paciente' expediente.paciente.id %}">
+Editar expediente
+</a>
+
+{% endblock %}
